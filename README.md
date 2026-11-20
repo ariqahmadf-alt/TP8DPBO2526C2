@@ -15,15 +15,32 @@ Teknologi: PHP 8 (mysqli, prepared statement), MySQL/MariaDB, Bootstrap 5.
 
 ```
 TP8DPBO2526C2/
-├── tp_mvc25/            # Source code aplikasi (MVC)
-│   ├── index.php        # Front controller / router
-│   ├── config.php       # Konfigurasi koneksi database
+├── tp_mvc25/                         # Source code aplikasi (MVC)
+│   ├── index.php                     # Front controller / router
+│   ├── config.php                    # Konfigurasi koneksi database
 │   ├── controllers/
+│   │   ├── BaseController.php        # Fungsi bersama semua controller
+│   │   ├── LecturerController.php    # Alur halaman dosen
+│   │   ├── DepartmentController.php  # Alur halaman program studi
+│   │   └── CourseController.php      # Alur halaman mata kuliah
 │   ├── models/
+│   │   ├── DB.php                    # Koneksi dan eksekusi query
+│   │   ├── Lecturer.php              # Query tabel lecturers
+│   │   ├── Department.php            # Query tabel departments
+│   │   └── Course.php                # Query tabel courses
 │   ├── views/
-│   └── assets/          # Bootstrap CSS & JS
-├── Dokumentasi/         # Screen record dan screenshot hasil program
-├── tp_mvc25.sql         # Skema dan data awal database
+│   │   ├── Template.php              # Kerangka halaman dan helper form
+│   │   ├── LecturerView.php          # Tampilan halaman dosen
+│   │   ├── DepartmentView.php        # Tampilan halaman program studi
+│   │   └── CourseView.php            # Tampilan halaman mata kuliah
+│   └── assets/
+│       ├── css/bootstrap.min.css
+│       └── js/bootstrap.bundle.min.js
+├── Dokumentasi/                      # Diagram dan screen record hasil program
+│   ├── alur-mvc.png
+│   ├── alur-simpan-data.png
+│   └── CRUD+validasi                 # Screen record dokumentasi
+├── tp_mvc25.sql                      # Skema dan data awal database
 └── README.md
 ```
 
@@ -145,30 +162,20 @@ Saat form dikirim, controller memvalidasi input terlebih dahulu. Jika valid, dat
 4. Sesuaikan `tp_mvc25/config.php` jika kredensial MySQL berbeda dari bawaan XAMPP (`root` tanpa password).
 5. Buka `http://localhost/tp_mvc25/` di browser.
 
-## Dokumentasi
+### Dokumentasi
 
-Seluruh berkas dokumentasi tersimpan di folder [`Dokumentasi/`](Dokumentasi/).
 
-### Screen record
 
-| Fitur | Berkas |
-|---|---|
-| Alur lengkap aplikasi | `Dokumentasi/screen-record.mp4` |
+https://github.com/user-attachments/assets/8b696b00-608b-42ad-8bfd-0fb4c9e138e6
 
-### Screenshot
 
-**Daftar dosen**
 
-![Daftar dosen](Dokumentasi/lecturers-index.png)
+Rekaman memperlihatkan seluruh operasi CRUD pada tiga halaman, perilaku relasi antar tabel, dan validasi form.
 
-**Daftar program studi**
-
-![Daftar program studi](Dokumentasi/departments-index.png)
-
-**Daftar mata kuliah**
-
-![Daftar mata kuliah](Dokumentasi/courses-index.png)
-
-**Form tambah mata kuliah dengan validasi**
-
-![Form mata kuliah](Dokumentasi/courses-form.png)
+| Waktu | Bagian | Yang ditunjukkan |
+|---|---|---|
+| 00:00 – 00:11 | Program studi | Menambah program studi `TI` (Teknik Informatika) dan `MM` (Multimedia), mengubah nama `TI` menjadi Teknologi Informasi, lalu menghapus `MM` melalui dialog konfirmasi. Tabel menampilkan jumlah dosen tiap program studi. |
+| 00:12 – 00:23 | Dosen | Daftar dosen dengan kolom program studi dan jumlah mata kuliah. Menambah dosen baru tanpa memilih program studi (kolom tampil `-`), mengubah data dosen Hendra Wijaya, lalu menghapus dosen uji. |
+| 00:24 – 00:33 | Mata kuliah | Daftar mata kuliah beserta dosen pengampu. Menambah `TI101` dan `TI102` dengan memilih dosen lewat dropdown, mengubah `TI102` (SKS, semester, dan dosen pengampu), lalu menghapus `TI102`. |
+| 00:34 – 00:40 | Efek relasi | Menghapus program studi `TI`: dosen terkait tetap ada tanpa program studi. Menghapus dosen Hendra: notifikasi menyebut mata kuliah yang diampu kini tanpa dosen pengampu. Menghapus `TI101` untuk membersihkan data uji. |
+| 00:41 – 00:51 | Validasi form | Pesan galat muncul di bawah kolom yang salah dan isian lain tidak hilang. Kode mata kuliah `A1` (harus 3–10 huruf/angka), SKS `9` (harus 1–6), kode `IK201` (sudah dipakai), kode program studi `IK` (sudah dipakai), dan NIDN `123` (harus 10 digit angka). |orm.png)
