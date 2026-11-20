@@ -1,9 +1,16 @@
 # TP8DPBO2526C2 — Campus Data (PHP MVC)
 
-**Nama:** Ariq Ahmad Fathir
-**NIM:** 2506752
-**Kelas:** C2
-**Mata kuliah:** Desain dan Pemrograman Berbasis Objek, Ilmu Komputer FPMIPA UPI
+| | |
+| --- | --- |
+| **Nama** | Ariq Ahmad Fathir |
+| **NIM** | 2506752 |
+| **Kelas** | C2 |
+
+## Janji
+
+Saya Ariq Ahmad Fathir dengan NIM 2506752 mengerjakan TP 8 dalam mata kuliah
+Desain dan Pemrograman Berorientasi Objek untuk keberkahan-Nya, maka saya tidak melakukan
+kecurangan seperti yang telah dispesifikasikan. Aamiin.
 
 ## Ringkasan
 
